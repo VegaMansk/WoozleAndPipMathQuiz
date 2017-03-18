@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/woezelenjip"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scaleType="centerCrop"
+    tools:context="com.example.android.woozleandpipmathquiz.MainActivity">
+
+    <RelativeLayout style="@style/relativeLayoutStyle">
+
+        <LinearLayout
+            android:id="@+id/score"
+            style="@style/linearLayoutStyle">
+
+            <TextView
+                android:id="@+id/scoreNotOk_text_view"
+                style="@style/scoreStyle"
+                android:layout_weight="1"
+                android:textColor="@color/colorYellow" />
+
+            <TextView
+                android:id="@+id/scoreOk_text_view"
+                style="@style/scoreStyle"
+                android:layout_weight="1"
+                android:textColor="@color/colorBlue" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:contentDescription="@string/levelIndicatorDescription"
+            android:id="@+id/scoreLevel"
+            style="@style/levelIndicatorStyle"
+            android:src="@drawable/sun" />
+
+        <LinearLayout
+            android:id="@+id/linearlayout_with_editview"
+            style="@style/linearLayoutStyle"
+            android:layout_below="@id/score"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/boxInstructionStyle"
+                android:id="@+id/EditTextview_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorYellow"
+                android:text="@string/defaultDigit"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="@dimen/editText_textSize" />
+
+            <EditText
+                style="@style/boxInstructionStyle"
+                android:id="@+id/editTextAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editTextAnswer_layout_height"
+                android:background="@color/colorBlue"
+                android:gravity="center"
+                android:hint="@string/hint"
+                android:imeOptions="flagNoExtractUi|actionDone"
+                android:inputType="number"
+                android:textSize="@dimen/editText_textSize">
+                </EditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearlayout_with_radiobuttons"
+            style="@style/linearLayoutBoxStyle">
+
+            <TextView
+                style="@style/boxInstructionStyle"
+                android:text="@string/radioButtonAdvice" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/level7_question0_radiobutton"
+                    style="@style/radioButtonStyle" />
+
+                <RadioButton
+                    android:id="@+id/level7_question1_radiobutton"
+                    style="@style/radioButtonStyle" />
+
+                <RadioButton
+                    android:id="@+id/level7_question2_radiobutton"
+                    style="@style/radioButtonStyle" />
+
+                <RadioButton
+                    android:id="@+id/level7_question3_radiobutton"
+                    style="@style/radioButtonStyle" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearlayout_with_checkboxes"
+            style="@style/linearLayoutBoxStyle">
+
+            <TextView
+                android:id="@+id/level6_question_text_view"
+                style="@style/boxInstructionStyle"
+                android:text="@string/checkBoxAdvice" />
+
+            <CheckBox
+                android:id="@+id/level6_question0_checkbox"
+                style="@style/checkBoxStyle" />
+
+            <CheckBox
+                android:id="@+id/level6_question1_checkbox"
+                style="@style/checkBoxStyle" />
+
+            <CheckBox
+                android:id="@+id/level6_question2_checkbox"
+                style="@style/checkBoxStyle" />
+
+            <CheckBox
+                android:id="@+id/level6_question3_checkbox"
+                style="@style/checkBoxStyle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_with_digits"
+            style="@style/linearLayoutStyle"
+            android:visibility="visible">
+
+            <TextView
+                android:text="hoi"
+                android:id="@+id/calculationTextView"
+                style="@style/mathStyle" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/resetButton"
+            style="@style/buttonStyle"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/resetbutton"
+            android:onClick="reset"
+            android:text="@string/reset" />
+
+        <Button
+            android:id="@+id/submitAnwserButton"
+            style="@style/buttonStyle"
+            android:layout_above="@id/resetButton"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/resetbutton"
+            android:onClick="submitAnswer"
+            android:text="@string/submitButtonText"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/notOkButton"
+            style="@style/buttonStyle"
+            android:layout_above="@id/resetButton"
+            android:background="@drawable/bluebutton"
+            android:onClick="notOk"
+            android:text="@string/notOk"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/okButton"
+            style="@style/buttonStyle"
+            android:layout_above="@id/resetButton"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/yellowbutton"
+            android:onClick="ok"
+            android:text="@string/ok"
+            android:visibility="visible" />
+
+
+    </RelativeLayout>
+
+</ScrollView>

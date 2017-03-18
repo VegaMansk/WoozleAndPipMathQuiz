@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Woezel en Pip quiz</string>
+    <string name="defaultScore">0</string>
+    <string name="defaultDigit">1</string>
+    <string name="defaultOperator">"+"</string>
+    <string name="defaultResult">2</string>
+    <string name="equals">=</string>
+    <string name="notOk">not\n ok</string>
+    <string name="notOkMessage">""Ahh, last answer was not correct"</string>
+    <string name="ok">ok</string>
+    <string name="okMessage">"Yeah, last answer was correct"</string>
+    <string name="reset">reset</string>
+    <string name="hint">type here your answer!</string>
+    <string name="finalMessage">Congratulations\nYou finished level 8.\nThe quiz is finished. \n\nPress RESET to start again.</string>
+    <string name="radioButtonAdvice">Check the right answer! </string>
+    <string name="checkBoxAdvice">Check all boxes that are correct!  </string>
+    <string name="submitButtonText">Submit answer</string>
+    <string name="levelIndicatorDescription">Sun Size is related to level 1 -> 5</string>
+</resources>

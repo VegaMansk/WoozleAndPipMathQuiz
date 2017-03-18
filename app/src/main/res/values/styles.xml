@@ -1,0 +1,95 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="levelIndicatorStyle" parent="AppTheme">
+        <item name="android:layout_width">@dimen/scoreLevel_imageview_width</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="scoreStyle" parent="AppTheme">
+        <item name="android:text">@string/defaultScore</item>
+        <item name="android:textSize">@dimen/scoreTextSize</item>
+    </style>
+
+    <style name="mathStyle" parent="AppTheme">
+        <item name="android:gravity">bottom</item>
+        <item name="android:text">@string/defaultDigit</item>
+        <item name="android:textSize">@dimen/digitTextSize</item>
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="buttonStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:layout_margin">@dimen/button_edge_margin</item>
+    </style>
+
+    <style name="radioButtonStyle" parent="buttonStyle">
+        <item name="android:layout_margin">@dimen/radioButton_edge_margin</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorBlue</item>
+        <item name="android:text">@string/defaultDigit</item>
+        <item name="android:textSize">@dimen/radioButtonTextSize</item>
+    </style>
+
+    <style name="checkBoxStyle" parent="buttonStyle">
+        <item name="android:layout_margin">@dimen/radioButton_edge_margin</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorBlue</item>
+        <item name="android:text">@string/defaultDigit</item>
+        <item name="android:textSize">@dimen/checkBoxTextSize</item>
+    </style>
+
+    <style name="relativeLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="linearLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/score</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="linearLayoutBoxStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_below">@id/score</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="boxInstructionStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:background">@color/colorYellow</item>
+        <item name="android:textSize">@dimen/boxInstructionTextSize</item>
+    </style>
+
+</resources>
+
