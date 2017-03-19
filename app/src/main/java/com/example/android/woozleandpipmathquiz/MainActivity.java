@@ -66,9 +66,27 @@ public class MainActivity extends AppCompatActivity {
     public static final String SQUARE_ROOT = "\u221a";
     public static final String SQUARE = "\u00b2";
     public static final String LOG = "log" + '\u2081' + '\u2080';
+
+    //constants used for saving state
+    public static final String INDEX_OF_RIGHT_ANSWER_AT_LEVEL_7 = "indexOfRightAnswerAtLevel7";
+    public static final String SCORE_OK = "scoreOk";
+    public static final String SCORE_NOT_OK = "scoreNotOk";
+    public static final String LEVEL = "level";
+    public static final String CALCULATIONSTRING = "calculationString";
+    public static final String RESULT = "result";
+    public static final String CHECKBOX_CHECKED = "checkBoxChecked";
+    public static final String CHECKBOX_TEXT = "checkBoxText";
+    public static final String RADIOBUTTON_CHECKED = "radioButtonChecked";
+    public static final String RADIOBUTTON_TEXT = "radioButtonText";
+    public static final String RESULT_OK = "resultOk";
+    public static final String ANIMATION_ON = "animationOn";
+    public static final String ANIMATION_SUBMITANSWER_BUTTON_ON = "animationOn";
+    public static final String EDITTEXTVIEW_TEXT = "checkBoxText";
+    public static final String IME_OPTIONS = "checkBoxText";
+
+
     public static final String CLOSING_PARENTHESIS = ")";
     public static final String OPENING_PARENTHESIS = "(";
-    public static final String CLOSING_SQUARE_BRACKET = "]";
     public static final String PARSE_ERROR =  "Could not parse ";
     public static final String EQUAL_QUESTIONMARK = "= ?";
 
@@ -125,35 +143,35 @@ public class MainActivity extends AppCompatActivity {
         // Save UI state changes to the savedInstanceState.
         // This bundle will be passed to onCreate if the process is
         // killed and restarted.
-        savedInstanceState.putInt("indexOfRightAnswerAtLevel7", indexOfRightAnswerAtLevel7);
-        savedInstanceState.putInt("scoreOk", scoreOk);
-        savedInstanceState.putInt("scoreNotOk", scoreNotOk);
-        savedInstanceState.putInt("level", level);
+        savedInstanceState.putInt(INDEX_OF_RIGHT_ANSWER_AT_LEVEL_7, indexOfRightAnswerAtLevel7);
+        savedInstanceState.putInt(SCORE_OK, scoreOk);
+        savedInstanceState.putInt(SCORE_NOT_OK, scoreNotOk);
+        savedInstanceState.putInt(LEVEL, level);
 
         // save level 1 to 5 calculation text
         TextView level1_5_calculation = (TextView) findViewById(R.id.calculationTextView);
-        savedInstanceState.putString("calculationString", (String) level1_5_calculation.getText());
+        savedInstanceState.putString(CALCULATIONSTRING, (String) level1_5_calculation.getText());
 
         // save the questions of level 6 and level 7
         for (int i = 0; i < 4; i++) {
-            savedInstanceState.putInt("result" + i, result[i]);
+            savedInstanceState.putInt(RESULT + i, result[i]);
             CheckBox checkBox = (CheckBox) findViewById(idOfLevel6Question[i]);
-            savedInstanceState.putBoolean("checkBoxChecked(" + i + CLOSING_PARENTHESIS , checkBox.isChecked()); // save the checkstatus
-            savedInstanceState.putString("checkBox(" + i + CLOSING_PARENTHESIS , (String) checkBox.getText());
+            savedInstanceState.putBoolean(CHECKBOX_CHECKED + i, checkBox.isChecked()); // save the checkstatus
+            savedInstanceState.putString(CHECKBOX_TEXT + i, (String) checkBox.getText());
             RadioButton radioButton = (RadioButton) findViewById(idOfLevel7Question[i]);
-            savedInstanceState.putString("radioButton(" + i + CLOSING_PARENTHESIS , (String) radioButton.getText());
-            savedInstanceState.putBoolean("resultOk[" + i + CLOSING_SQUARE_BRACKET , resultOk[i]);
+            savedInstanceState.putString(RADIOBUTTON_TEXT + i, (String) radioButton.getText());
+            savedInstanceState.putBoolean(RESULT_OK + i, resultOk[i]);
         }
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        savedInstanceState.putInt("radioButtonChecked", radioGroup.getCheckedRadioButtonId());
-        savedInstanceState.putBoolean("animationOn", animationOn);
-        savedInstanceState.putBoolean("animationSubmitAnswerOn", animationSubmitAnswerOn);
+        savedInstanceState.putInt(RADIOBUTTON_CHECKED, radioGroup.getCheckedRadioButtonId());
+        savedInstanceState.putBoolean(ANIMATION_ON, animationOn);
+        savedInstanceState.putBoolean(ANIMATION_SUBMITANSWER_BUTTON_ON, animationSubmitAnswerOn);
 
         //LEVEL 8 SAVINGS
         TextView text = (TextView) findViewById(R.id.EditTextview_question);
-        savedInstanceState.putString("editTextView", (String) text.getText());
-        savedInstanceState.putInt("imeOptions", text.getImeOptions());
+        savedInstanceState.putString(EDITTEXTVIEW_TEXT, (String) text.getText());
+        savedInstanceState.putInt(IME_OPTIONS, text.getImeOptions());
     }
 
 
@@ -161,33 +179,32 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         // Restore UI state from the savedInstanceState.
         // This bundle has also been passed to onCreate.
-        indexOfRightAnswerAtLevel7 = savedInstanceState.getInt("indexOfRightAnswerAtLevel7");
+        indexOfRightAnswerAtLevel7 = savedInstanceState.getInt(INDEX_OF_RIGHT_ANSWER_AT_LEVEL_7);
 
-        scoreOk = savedInstanceState.getInt("scoreOk");
-        scoreNotOk = savedInstanceState.getInt("scoreNotOk");
-        level = savedInstanceState.getInt("level");
+        scoreOk = savedInstanceState.getInt(SCORE_OK);
+        scoreNotOk = savedInstanceState.getInt(SCORE_NOT_OK);
+        level = savedInstanceState.getInt(LEVEL);
 
         // get the questions of level 6 and 7 back
-        SharedPreferences settings = getSharedPreferences("answers", MODE_PRIVATE);
         for (int i = 0; i < 4; i++) {
-            result[i] = savedInstanceState.getInt("result" + i);
+            result[i] = savedInstanceState.getInt(RESULT + i);
             CheckBox checkBox = (CheckBox) findViewById(idOfLevel6Question[i]);
-            checkBox.setText(savedInstanceState.getString("checkBox(" + i + CLOSING_PARENTHESIS ));
-            checkBox.setChecked(savedInstanceState.getBoolean("checkBoxChecked(" + i + CLOSING_PARENTHESIS ));
+            checkBox.setText(savedInstanceState.getString(CHECKBOX_TEXT + i));
+            checkBox.setChecked(savedInstanceState.getBoolean(CHECKBOX_CHECKED + i));
             RadioButton radioButton = (RadioButton) findViewById(idOfLevel7Question[i]);
-            radioButton.setText(savedInstanceState.getString("radioButton(" + i + CLOSING_PARENTHESIS ));
-            resultOk[i] = savedInstanceState.getBoolean("resultOk[" + i + CLOSING_SQUARE_BRACKET);
+            radioButton.setText(savedInstanceState.getString(RADIOBUTTON_TEXT + i));
+            resultOk[i] = savedInstanceState.getBoolean(RESULT_OK + i);
         }
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        radioGroup.check(savedInstanceState.getInt("radioButtonChecked"));
-        animationOn = savedInstanceState.getBoolean("animationOn");
-        animationSubmitAnswerOn = savedInstanceState.getBoolean("animationSubmitAnswerOn");
+        radioGroup.check(savedInstanceState.getInt(RADIOBUTTON_CHECKED));
+        animationOn = savedInstanceState.getBoolean(ANIMATION_ON);
+        animationSubmitAnswerOn = savedInstanceState.getBoolean(ANIMATION_SUBMITANSWER_BUTTON_ON);
 
 
         //level 8
         TextView text = (TextView) findViewById(R.id.EditTextview_question);
-        text.setText(savedInstanceState.getString("editTextView"));
-        text.setImeOptions(savedInstanceState.getInt("imeOptions"));
+        text.setText(savedInstanceState.getString(EDITTEXTVIEW_TEXT));
+        text.setImeOptions(savedInstanceState.getInt(IME_OPTIONS));
 
         // restore the state of the animations
         final Animation animation = new AlphaAnimation(VISIBLE, INVISIBLE); // Change alpha from fully visible to invisible
@@ -220,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             TextView level1_5_calculation = (TextView) findViewById(R.id.calculationTextView);
-            level1_5_calculation.setText(savedInstanceState.getString("calculationString"));
+            level1_5_calculation.setText(savedInstanceState.getString(CALCULATIONSTRING));
         } else {
             switch (level) {
                 case 6: // restore checkboxes level 6
