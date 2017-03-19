@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String SQUARE_ROOT = "\u221a";
     public static final String SQUARE = "\u00b2";
     public static final String LOG = "log" + '\u2081' + '\u2080';
+    public static final String CLOSING_PARENTHESIS = ")";
+    public static final String OPENING_PARENTHESIS = "(";
+    public static final String CLOSING_SQUARE_BRACKET = "]";
+    public static final String PARSE_ERROR =  "Could not parse ";
+    public static final String EQUAL_QUESTIONMARK = "= ?";
 
     public static final Boolean CHECKBOX = true;
     public static final Boolean RADIOBUTTON = false;
@@ -133,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             savedInstanceState.putInt("result" + i, result[i]);
             CheckBox checkBox = (CheckBox) findViewById(idOfLevel6Question[i]);
-            savedInstanceState.putBoolean("checkBoxChecked(" + i + ")", checkBox.isChecked()); // save the checkstatus
-            savedInstanceState.putString("checkBox(" + i + ")", (String) checkBox.getText());
+            savedInstanceState.putBoolean("checkBoxChecked(" + i + CLOSING_PARENTHESIS , checkBox.isChecked()); // save the checkstatus
+            savedInstanceState.putString("checkBox(" + i + CLOSING_PARENTHESIS , (String) checkBox.getText());
             RadioButton radioButton = (RadioButton) findViewById(idOfLevel7Question[i]);
-            savedInstanceState.putString("radioButton(" + i + ")", (String) radioButton.getText());
-            savedInstanceState.putBoolean("resultOk[" + i + "]", resultOk[i]);
+            savedInstanceState.putString("radioButton(" + i + CLOSING_PARENTHESIS , (String) radioButton.getText());
+            savedInstanceState.putBoolean("resultOk[" + i + CLOSING_SQUARE_BRACKET , resultOk[i]);
         }
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -167,11 +172,11 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             result[i] = savedInstanceState.getInt("result" + i);
             CheckBox checkBox = (CheckBox) findViewById(idOfLevel6Question[i]);
-            checkBox.setText(savedInstanceState.getString("checkBox(" + i + ")"));
-            checkBox.setChecked(savedInstanceState.getBoolean("checkBoxChecked(" + i + ")"));
+            checkBox.setText(savedInstanceState.getString("checkBox(" + i + CLOSING_PARENTHESIS ));
+            checkBox.setChecked(savedInstanceState.getBoolean("checkBoxChecked(" + i + CLOSING_PARENTHESIS ));
             RadioButton radioButton = (RadioButton) findViewById(idOfLevel7Question[i]);
-            radioButton.setText(savedInstanceState.getString("radioButton(" + i + ")"));
-            resultOk[i] = savedInstanceState.getBoolean("resultOk[" + i + "]");
+            radioButton.setText(savedInstanceState.getString("radioButton(" + i + CLOSING_PARENTHESIS ));
+            resultOk[i] = savedInstanceState.getBoolean("resultOk[" + i + CLOSING_SQUARE_BRACKET);
         }
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioGroup.check(savedInstanceState.getInt("radioButtonChecked"));
@@ -334,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     myNum = Integer.parseInt(nameField.getText().toString());
                 } catch (NumberFormatException nfe) {
-                    System.out.println("Could not parse " + nfe);
+                    System.out.println(PARSE_ERROR + nfe);
                 }
                 if (result[2] == myNum) {
                     handleOk();
@@ -741,12 +746,12 @@ public class MainActivity extends AppCompatActivity {
                     calString = LOG;
                     num8 = (int) Math.pow(10, generateNumber(4));
                     result[0] = generateResult(true, num8, 0, calString); // Generate a result and remember if it is a right answer in result[i]
-                    String text = calString + '(' + String.valueOf(num8) + ")";
+                    String text = calString + OPENING_PARENTHESIS + String.valueOf(num8) + CLOSING_PARENTHESIS;
                     calString = SQUARE_ROOT;
                     num8 = generateNumber(MAXIMUM_DIGIT_VALUES);
                     num8 = num8 * num8; // to get a nice integer as square root
                     result[1] = generateResult(true, num8, 0, calString); // Generate a result and remember if it is a right answer in result[i]
-                    text = text + "+" + calString + String.valueOf(num8) + "= ?";
+                    text = text + ADD + calString + String.valueOf(num8) + EQUAL_QUESTIONMARK;
                     result[2] = result[0] + result[1];
                     displayString(R.id.EditTextview_question, text);
 
